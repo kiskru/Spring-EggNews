@@ -14,50 +14,58 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="http://localhost:8080/">EggNews</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="http://localhost:8080/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:8080/noticia/registrar">Nueva</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://localhost:8080/noticia/lista">Noticias</a>
-                    <li class="nav-item dropdown">
 
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+    <header class="site-header sticky-top py-0">
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="http://localhost:8080/">EggNews</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="http://localhost:8080/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8080/noticia/registrar">Nueva</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8080/noticia/lista">Noticias</a>
+                        <li class="nav-item dropdown">
+
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </nav>
-    <img src="https://claynewsnetwork.com/wp-content/uploads/03-10-17BAnner.png" class="img-fluid" alt="news">
+        </nav>
+    </header>
+
+    <div class="row">
+
+        <img src="https://claynewsnetwork.com/wp-content/uploads/03-10-17BAnner.png" class="img-fluid" alt="news">
+    </div>
+
 
     <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
         <div class="card-body">
@@ -70,24 +78,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 
     <div class="album py-5 bg-body-tertiary">
-        <div  class="container">
+        <div class="container">
 
-            <div  class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div th:each="noticia : ${noticias}" class="col">
                     <div class="card border-primary mb-3">
-                        <svg width="100%" height="10" >
-                            <rect  width="100%" height="100%" fill="lightblue"></rect>
-                            <text x="50%" y="50%" fill="black" dy=".3em"></text>
+                        <svg width="100%" height="10">
+                            <rect width="100%" height="100%" fill="lightblue"></rect>
                         </svg>
-                                               
+
                         <div class="card-body">
                             <h5 th:text="${noticia.titulo}" class="card-title"></h5>
-                            <p th:text="${noticia.cuerpo}" class="card-text"></p>
 
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-                                    <a class="btn btn-sm btn-outline-secondary" href="http://localhost:8080/noticia/lista" role="button">Editar</a>
+                                    <a class="btn btn-sm btn-outline-secondary"
+                                        th:href="@{/noticia/vista/__${noticia.id}__}">Ver</a>
+                                    <a class="btn btn-sm btn-outline-secondary"
+                                        href="http://localhost:8080/noticia/lista" role="button">Editar</a>
                                 </div>
                                 <small class="text-body-secondary">10 mins</small>
                             </div>

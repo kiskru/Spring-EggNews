@@ -61,26 +61,16 @@ public class NoticiaControlador {
 
         return "noticiaLista.html";
     }
-    
-    @GetMapping("/")
-    public String index(ModelMap modelo){
-        
-        List<Noticia> noticias = noticiaService.listarNoticias();
-        modelo.addAttribute("noticias", noticias);
-        
-        return "index.html";
-    }
-    
-    
+
     @GetMapping("/modificar/{id}")
-    public String modificar(@PathVariable Long id, ModelMap modelo){
+    public String modificar(@PathVariable Long id, ModelMap modelo) {
         modelo.put("noticia", noticiaService.getOne(id));
         return "noticiaModificar.html";
     }
-    
+
     @PostMapping("/modificar/{id}")
-    public String modificar(@PathVariable Long id, String titulo, String contenido, ModelMap modelo){
-        
+    public String modificar(@PathVariable Long id, String titulo, String contenido, ModelMap modelo) {
+
         try {
             noticiaService.modificarNoticia(id, titulo, contenido);
             modelo.put("exito", "La noticia ha sido cargada con exito");
@@ -89,7 +79,21 @@ public class NoticiaControlador {
             modelo.put("error", ex.getMessage());
             return "noticiaModificar.html";
         }
+
+    }
+
+    @GetMapping("/vista/{id}")
+    public String vista(@PathVariable Long id, ModelMap modelo) {
+        Noticia noticia = noticiaService.getOne(id);
+        modelo.put("noticia", noticia);
+
+        return "noticiaVista.html";
+    }
+    
+    @PostMapping("/vista/{id}")
+    public String visto(@PathVariable Long id, ModelMap modelo){
         
+        return "noticiaVista.html";
     }
 
 }//The end
