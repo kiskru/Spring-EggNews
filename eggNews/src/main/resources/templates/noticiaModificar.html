@@ -77,12 +77,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                 <input hidden th:value="${id}" name="id">
 
-                <div class="form-group">
-                    <input th:value="${noticia.titulo}" type="text" class="form-group mb-2" name="titulo">
+                <div class="form-group" >
+                    
+                    <input th:value="${noticia.titulo}" type="text" class="form-group mb-2 col-10" name="titulo">
+                    
                 </div>
 
                 <div class="form-group">
-                    <textarea th:text="${noticia.cuerpo}" type="text" class="form-group mb-2" rows="10" cols="150" name="contenido"></textarea>
+                    <textarea th:text="${noticia.cuerpo}" type="text" class="form-group mb-2 col-10" rows="10" cols="150" name="contenido"></textarea>
                 </div>
 
                 <div class="btn-group">

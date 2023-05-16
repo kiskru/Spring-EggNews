@@ -77,5 +77,9 @@ public class NoticiaService {
             throw new MyException("Debes ingresar el cuerpo de la noticia");
         }
     }
+    
+    public void eliminar(Long id){
+      noticiaRepositorio.deleteById(id);
+    }
 
 }//The end

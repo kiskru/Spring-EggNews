@@ -106,9 +106,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <td class=" align-middle">
                             <div class="btn-group">
                                 <a class="btn btn-sm btn-outline-primary" th:href="@{/noticia/modificar/__${noticia.id}__}"> Modificar</a>
-                                <a class="btn btn-sm btn-outline-primary" href="#" role="button">Eliminar</a>
-                            </div>
-                            
+                                <a class="btn btn-sm btn-outline-primary" th:href="@{/noticia/eliminar/__${noticia.id}__}" role="button">Eliminar</a>
+                            </div>                            
                         </td>
                     </tr>
                 </tbody>

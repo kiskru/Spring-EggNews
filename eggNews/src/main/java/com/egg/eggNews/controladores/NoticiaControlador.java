@@ -31,7 +31,7 @@ public class NoticiaControlador {
     public String registrar(ModelMap modelo) {
 
         List<Noticia> noticias = noticiaService.listarNoticias();
-        modelo.addAttribute("noticias", noticias);
+        modelo.addAttribute("noticias", noticias);// muestra una lista en el formulario
 
         return "noticiaForm.html";
     }
@@ -93,7 +93,13 @@ public class NoticiaControlador {
     @PostMapping("/vista/{id}")
     public String visto(@PathVariable Long id, ModelMap modelo){
         
-        return "noticiaVista.html";
+        return "noticiaVista.html";       
+    }
+    
+    @GetMapping("/eliminar/{id}")
+    public String borrar(@PathVariable Long id){
+        noticiaService.eliminar(id);
+        return "redirect:/noticia/lista";
     }
 
 }//The end
