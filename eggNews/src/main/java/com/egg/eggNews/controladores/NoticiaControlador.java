@@ -42,6 +42,9 @@ public class NoticiaControlador {
         try {
             noticiaService.crearNoticia(titulo, contenido); // retorna al index si todo esta bien
             modelo.put("exito", "La noticia ha sido cargada con exito");
+            List<Noticia> noticias = noticiaService.listarNoticias();
+            modelo.addAttribute("noticias", noticias);
+            return "noticiaLista.html";
         } catch (MyException e) {
             List<Noticia> noticias = noticiaService.listarNoticias();
             modelo.addAttribute("noticias", noticias);
@@ -49,7 +52,6 @@ public class NoticiaControlador {
 
             return "noticiaForm.html";
         }
-        return "index.html";
 
     }
 
@@ -69,15 +71,17 @@ public class NoticiaControlador {
     }
 
     @PostMapping("/modificar/{id}")
-    public String modificar(@PathVariable Long id, String titulo, String contenido, ModelMap modelo) {
+    public String modificar(@PathVariable Long id, @RequestParam String titulo, @RequestParam String contenido, ModelMap modelo) {
 
         try {
             noticiaService.modificarNoticia(id, titulo, contenido);
-            modelo.put("exito", "La noticia ha sido cargada con exito");
-            return "redirect:/noticia/lista";
+            modelo.put("exito", "La noticia ha sido Modificada con exito");
+            this.lista(modelo);
+            return "noticiaLista.html";
         } catch (MyException ex) {
             modelo.put("error", ex.getMessage());
-            return "noticiaModificar.html";
+            return this.modificar(id, modelo);
+            //return "noticiaModificar.html";
         }
 
     }
@@ -89,16 +93,18 @@ public class NoticiaControlador {
 
         return "noticiaVista.html";
     }
-    
+
     @PostMapping("/vista/{id}")
-    public String visto(@PathVariable Long id, ModelMap modelo){
-        
-        return "noticiaVista.html";       
+    public String visto(@PathVariable Long id, ModelMap modelo) {
+
+        return "noticiaVista.html";
     }
-    
+
     @GetMapping("/eliminar/{id}")
-    public String borrar(@PathVariable Long id){
+    public String borrar(@PathVariable Long id, ModelMap modelo) {
+
         noticiaService.eliminar(id);
+        modelo.addAttribute("exito", "La noticia ha sido eliminada");
         return "redirect:/noticia/lista";
     }
 

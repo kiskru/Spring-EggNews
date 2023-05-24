@@ -58,18 +58,35 @@
             </div>
         </nav>
     </header>
+    
+    <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+        <div class="card-body">
+            <h5 class="card-title">Exito </h5>
+            <p class="card-text" th:text="${exito}"></p>
+        </div>
+    </div>
+
     <input hidden th:value="${id}" name="id">
     <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5  overflow-hidden">
         <div class="my-3 py-3">
             <h2 class="display-5 text-center" th:text="${noticia.titulo}"></h2>
         </div>
 
-        <div class="bg-body-tertiary shadow-sm mx-auto mb-2 p-3 text-justify" th:text="${noticia.cuerpo}" 
-                style="width: 80%; height: 100%; border-radius: 21px 21px 21px 21px; color: black;">
+        <div class="bg-body-tertiary shadow-sm mx-auto mb-2 p-3 text-justify" th:text="${noticia.cuerpo}"
+            style="width: 80%; height: 100%; border-radius: 21px 21px 21px 21px; color: black;">
         </div>
 
     </div>
 
+    <footer class="text-muted py-5">
+        <div class="containerFooter">
+            <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
+            <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
+            <p class="float-end mb-1">
+                <a href="#" style="text-decoration:none"><span>â¬ï¸</span> Back to top</a>
+            </p>
+        </div>
+    </footer>
 
 </body>
 

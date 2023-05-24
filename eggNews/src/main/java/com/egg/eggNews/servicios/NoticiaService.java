@@ -42,10 +42,10 @@ public class NoticiaService {
 
     }
 
-    public Noticia getOne(Long id){
+    public Noticia getOne(Long id) {
         return noticiaRepositorio.getOne(id);
     }
-    
+
     public List<Noticia> listarNoticias() {
         List<Noticia> noticias;
         noticias = noticiaRepositorio.findAll();
@@ -66,10 +66,9 @@ public class NoticiaService {
         }
     }
 
-        
     private void validar(String titulo, String cuerpo) throws MyException {
 
-        if (titulo.isEmpty()) {
+        if (titulo.isEmpty() || titulo == null) {
             throw new MyException("Debes ingresar un titulo");
         }
 
@@ -77,9 +76,9 @@ public class NoticiaService {
             throw new MyException("Debes ingresar el cuerpo de la noticia");
         }
     }
-    
-    public void eliminar(Long id){
-      noticiaRepositorio.deleteById(id);
+
+    public void eliminar(Long id) {
+        noticiaRepositorio.deleteById(id);
     }
 
 }//The end
