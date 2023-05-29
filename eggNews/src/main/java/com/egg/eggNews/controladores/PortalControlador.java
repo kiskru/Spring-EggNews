@@ -39,33 +39,45 @@ public class PortalControlador {
 
         return "index.html";
     }
-    
+
     @GetMapping("/registrar")
-    public String registrar(){
+    public String registrar() {
         return "registro.html";
     }
-    
+
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombre, @RequestParam String email, 
-            @RequestParam String password, String password2, ModelMap modelo){
-        
-        
+    public String registro(@RequestParam String nombre, @RequestParam String email,
+            @RequestParam String password, String password2, ModelMap modelo) {
+
         try {
             userService.registrar(nombre, email, password, password2);
             modelo.put("exito", "Usuario registrado con exito!");
             return "index.html";
         } catch (MyException ex) {
             modelo.put("error", ex.getMessage());
-            modelo.put("nombre",nombre);
+            modelo.put("nombre", nombre);
             modelo.put("email", email);
             return "registro.html";
         }
-        
+
     }
-    
+
     @GetMapping("/login")
-    public String login(){
+    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
+        if (error != null) {
+            modelo.put("error", "Usuario o Contraseña invalidos");
+        }
         return "login.html";
     }
+
+    @GetMapping("/inicio")
+    public String inicio(ModelMap modelo) {
+
+        List<Noticia> noticias = noticiaService.listarNoticias();
+        modelo.addAttribute("noticias", noticias);
+
+        return "index.html";
+    }
+
 
 }//The end
