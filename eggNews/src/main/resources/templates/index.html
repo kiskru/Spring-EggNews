@@ -18,7 +18,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <header class="site-header sticky-top py-0">
         <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="http://localhost:8080/">EggNews</a>
+                <a class="navbar-brand text-danger" href="http://localhost:8080/">EggNews</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -52,10 +52,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                    <div class="btn-group">
+                        <a class="btn btn-outline-light" href="http://localhost:8080/login" role="button">iniciar sesion</a>
+                        <a class="btn btn-outline-success" href="http://localhost:8080/registrar" role="button">Registrarse</a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -77,28 +77,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 
 
-    <div class="album py-5 bg-body-tertiary">
-        <div class="container">
+    <div class="album py-2 bg-body-tertiary m-1">
+        <div class="container p-1">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div th:each="noticia : ${noticias}" class="col">
-                    <div class="card border-primary mb-3">
+                <div th:each="noticia : ${noticias}" class="col my-1">
+                    <div class="card border-primary mb-1">
                         <svg width="100%" height="10">
                             <rect width="100%" height="100%" fill="lightblue"></rect>
                         </svg>
 
                         <div class="card-body">
                             <h5 th:text="${noticia.titulo}" class="card-title"></h5>
-
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a class="btn btn-sm btn-outline-secondary"
-                                        th:href="@{/noticia/vista/__${noticia.id}__}">Ver</a>
-                                    <a class="btn btn-sm btn-outline-secondary"
-                                        href="http://localhost:8080/noticia/lista" role="button">Editar</a>
-                                </div>
-                                <small class="text-body-secondary">10 mins</small>
-                            </div>
                         </div>
                     </div>
                 </div>
