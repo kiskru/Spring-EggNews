@@ -41,7 +41,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <tr>
                         <th scope="col"> Titulo </th>
                         <th scope="col"> Cuerpo</th>
-                        <th scope="col">Compartir</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
 
@@ -52,9 +52,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <td class=" align-middle">
                             <div class="btn-group">
                                 <a class="btn btn-sm btn-outline-primary"
-                                    href="http://www.facebook.com"> Facebook</a>
-                                <a class="btn btn-sm btn-outline-success"
-                                    href="http://www.whatsapp.com" target="_blank" role="button">Whatsapp</a>
+                                    th:href="@{/noticia/modificar/__${noticia.id}__}"> Modificar</a>
+                                <a class="btn btn-sm btn-outline-danger"
+                                    th:href="@{/noticia/eliminar/__${noticia.id}__}" role="button">Eliminar</a>
                             </div>
                         </td>
                     </tr>

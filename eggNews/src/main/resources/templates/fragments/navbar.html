@@ -1,0 +1,75 @@
+<header class="site-header sticky-top p-0 m-0">
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-danger" href="http://localhost:8080/inicio">EggNews</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                   
+                    <li class="nav-item">
+                        <a  sec:authorize="hasRole('ADMIN')"
+                        class="nav-link active" aria-current="page" 
+                        href="http://localhost:8080/inicio">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="http://localhost:8080/inicio">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a sec:authorize="hasRole('ADMIN')" class="nav-link" 
+                        href="http://localhost:8080/noticia/registrar">Nueva Noticia</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:8080/noticia/lista">Noticias</a>
+                    <li class="nav-item dropdown">
+
+                    </li>
+                </ul>
+                <div class="btn-group">
+
+                    <a class="btn btn-outline-primary" th:if="${session.usuariosession == null}" 
+                    href="http://localhost:8080/login" role="button">iniciar sesion</a>
+                    <a class="btn btn-outline-success" th:if="${session.usuariosession == null}"
+                    href="http://localhost:8080/registrar" role="button">Registrarse</a>
+                    <a class="btn btn-outline-danger" th:if="${session.usuariosession != null}"
+                    href="http://localhost:8080/logout">Cerrar sesión</a>
+
+
+
+                    <!-- <li class="nav-item" th:unless="${#httpServletRequest.requestURI == '/registrar'}">
+                        <a class="nav-link" th:if="${session.usuariosession == null}" href="/registrar" id="navbarDropdown" role="button" aria-expanded="false">
+                            REGISTRATE!
+                        </a>                 
+                    </li>
+                    
+                    <li class="nav-item" th:unless="${#httpServletRequest.requestURI == '/login'}">
+                        <a class="nav-link" th:if="${session.usuariosession == null}" href="/login" id="navbarDropdown" role="button" aria-expanded="false">
+                            LOGIN!
+                        </a>                    
+                    </li> -->
+
+
+
+                 </div>
+            </div>
+        </div>
+    </nav>
+</header>

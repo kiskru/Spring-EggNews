@@ -13,6 +13,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,11 +24,11 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 @Entity
 @Table(name = "Usuario")
-public class Usuario implements UserDetails{
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name="uuid", strategy = "uuid2")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombreUsuario;
     private String password;
@@ -36,6 +37,8 @@ public class Usuario implements UserDetails{
     @Enumerated(EnumType.STRING)
     private Rol rol;
     private Boolean activo;
+    @OneToOne
+    private Imagen imagen;
 
     public Usuario() {
     }
@@ -71,6 +74,7 @@ public class Usuario implements UserDetails{
     public void setPassword(String password) {
         this.password = password;
     }
+
     public Rol getRol() {
         return rol;
     }
@@ -87,6 +91,18 @@ public class Usuario implements UserDetails{
         this.activo = activo;
     }
 
+    public Imagen getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Imagen imagen) {
+        this.imagen = imagen;
+    }
+
+    
+    
+    
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
