@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template-->
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="/fragments/head :: head"></head>
@@ -33,9 +32,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </div>
     </div>
 
-    <div class="container-fluid m-5 contenedor">
+    <div class="container m-5 " style="display: grid; justify-items: center;">
 
-        <form class="formulario" th:action="@{/registro}" method="POST" enctype="multipart/form-data">
+        <form class="form " style="width:50%; " th:action="@{/registro}" method="POST" enctype="multipart/form-data">
 
 
             <div class="form-group my-3">
@@ -63,30 +62,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     th:value="${password2}">
             </div>
 
+            <div style="justify-content: center; display: flex;">
+                <button type="submit" class="btn btn-primary mt-3">Registrarme</button>
+            </div>
 
-            <button type="submit" class="btn btn-primary mt-3 botones">Registrarme</button>
+            <div style="justify-content: center; display: flex;">
+                <a th:href="@{/}"  class="btn btn-secondary my-2">Volver</a>
+            </div>
+
         </form>
 
-
-        <section class=" text-center container">
-            <div class="row mt-3">
-                <div class="divVolver">
-                    <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
-                </div>
-            </div>
-        </section>
     </div>
 
-    <footer class="text-muted py-5">
-        <div class="containerFooter">
-            <p class="mb-1">Album example is &copy; Bootstrap,<br>but please download and customize it for yourself!</p>
-            <p class="mb-0">New to Bootstrap? <a href="/"><br>Visit the homepage</a> or read our <a
-                    href="../getting-started/introduction/">getting started guide</a>.</p>
-            <p class="float-end mb-1">
-                <a href="#" style="text-decoration:none"><span>↑</span> Back to top</a>
-            </p>
-        </div>
-    </footer>
+
 
     <footer th:replace="/fragments/footer :: footer"> </footer>
 

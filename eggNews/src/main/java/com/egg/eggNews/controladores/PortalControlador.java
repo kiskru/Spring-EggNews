@@ -54,8 +54,8 @@ public class PortalControlador {
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombre, @RequestParam String email,
-            @RequestParam String password, String password2, MultipartFile archivo, ModelMap modelo) {
+    public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam MultipartFile archivo,
+            @RequestParam String password, String password2,   ModelMap modelo) {
 
         try {
             userService.registrar(archivo, nombre, email, password, password2);
@@ -70,7 +70,7 @@ public class PortalControlador {
 
     }
 
-    @GetMapping("/login")
+    @GetMapping("/login") 
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
         if (error != null) {
             modelo.put("error", "Usuario o Contraseña invalidos");

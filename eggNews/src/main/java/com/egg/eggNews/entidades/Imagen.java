@@ -21,8 +21,11 @@ public class Imagen {
     @Id
     @GeneratedValue(generator = "uuid")
     private String id;
+    
     private String mime;
+    
     private String nombre;
+    
     @Lob @Basic(fetch = FetchType.LAZY)
     private byte[] contenido;
 
@@ -42,15 +45,15 @@ public class Imagen {
     }
 
     public void setMime(String mime) {
-        this.mime = mime;
+        this.mime = mime; 
     }
 
-    public String getNomnbre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNomnbre(String nomnbre) {
-        this.nombre = nomnbre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public byte[] getContenido() {

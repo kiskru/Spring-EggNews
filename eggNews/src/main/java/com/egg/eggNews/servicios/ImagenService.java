@@ -21,14 +21,14 @@ public class ImagenService {
 
     @Autowired
     private ImagenRepository imagenRepository;
-    
+
     @Transactional
     public Imagen guardar(MultipartFile archivo) throws MyException{
         if (archivo != null) {
             try {
                 Imagen imagen = new Imagen();
                 imagen.setMime(archivo.getContentType());
-                imagen.setNomnbre(archivo.getName());
+                imagen.setNombre(archivo.getName());
                 imagen.setContenido(archivo.getBytes());
 
                 return imagenRepository.save(imagen);
@@ -37,10 +37,10 @@ public class ImagenService {
                 System.err.println(e.getMessage());
             }
         }
-        
+
         return null;
     }
-    
+
     @Transactional
     public Imagen actualizar(MultipartFile archivo, String idImagen ) throws MyException{
         
@@ -57,7 +57,7 @@ public class ImagenService {
                 }
                 
                 imagen.setMime(archivo.getContentType());
-                imagen.setNomnbre(archivo.getName());
+                imagen.setNombre(archivo.getName());
                 imagen.setContenido(archivo.getBytes());
 
                 return imagenRepository.save(imagen);

@@ -30,13 +30,16 @@ public class Usuario implements UserDetails {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
+    
     private String nombreUsuario;
     private String password;
     private String email;
 
     @Enumerated(EnumType.STRING)
     private Rol rol;
+    
     private Boolean activo;
+    
     @OneToOne
     private Imagen imagen;
 
