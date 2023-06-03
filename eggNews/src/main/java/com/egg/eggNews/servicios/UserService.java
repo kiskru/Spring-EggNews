@@ -115,4 +115,8 @@ public class UserService implements UserDetailsService {
 
     }
 
+    public Usuario getOne(String id){
+        return userRepositorio.getOne(id);
+        
+    }
 }

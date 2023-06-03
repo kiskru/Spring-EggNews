@@ -92,5 +92,13 @@ public class PortalControlador {
 
         return "inicio.html";
     }
+    
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping("/perfil")
+    public String perfil (ModelMap modelo, HttpSession session){
+        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+        modelo.put("usuario", usuario);        
+        return "usuario_modificar.html";
+    }
 
 }//The end

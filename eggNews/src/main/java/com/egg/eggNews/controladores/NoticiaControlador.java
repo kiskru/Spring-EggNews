@@ -65,13 +65,13 @@ public class NoticiaControlador {
     }
 
     @GetMapping("/modificar/{id}")
-    public String modificar(@PathVariable Long id, ModelMap modelo) {
+    public String modificar(@PathVariable String id, ModelMap modelo) {
         modelo.put("noticia", noticiaService.getOne(id));
         return "noticiaModificar.html";
     }
 
     @PostMapping("/modificar/{id}")
-    public String modificar(@PathVariable Long id, @RequestParam String titulo, @RequestParam String contenido, ModelMap modelo) {
+    public String modificar(@PathVariable String id, @RequestParam String titulo, @RequestParam String contenido, ModelMap modelo) {
 
         try {
             noticiaService.modificarNoticia(id, titulo, contenido);
@@ -87,7 +87,7 @@ public class NoticiaControlador {
     }
 
     @GetMapping("/vista/{id}")
-    public String vista(@PathVariable Long id, ModelMap modelo) {
+    public String vista(@PathVariable String id, ModelMap modelo) {
         Noticia noticia = noticiaService.getOne(id);
         modelo.put("noticia", noticia);
 
@@ -95,13 +95,13 @@ public class NoticiaControlador {
     }
 
     @PostMapping("/vista/{id}")
-    public String visto(@PathVariable Long id, ModelMap modelo) {
+    public String visto(@PathVariable String id, ModelMap modelo) {
 
         return "noticiaVista.html";
     }
 
     @GetMapping("/eliminar/{id}")
-    public String borrar(@PathVariable Long id, ModelMap modelo) {
+    public String borrar(@PathVariable String id, ModelMap modelo) {
 
         noticiaService.eliminar(id);
         modelo.addAttribute("exito", "La noticia ha sido eliminada");

@@ -42,7 +42,7 @@ public class NoticiaService {
 
     }
 
-    public Noticia getOne(Long id) {
+    public Noticia getOne(String id) {
         return noticiaRepositorio.getOne(id);
     }
 
@@ -52,7 +52,7 @@ public class NoticiaService {
         return noticias;
     }
 
-    public void modificarNoticia(Long id, String titulo, String cuerpo) throws MyException {
+    public void modificarNoticia(String id, String titulo, String cuerpo) throws MyException {
 
         this.validar(titulo, cuerpo);
 
@@ -77,7 +77,7 @@ public class NoticiaService {
         }
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(String id) {
         noticiaRepositorio.deleteById(id);
     }
 
